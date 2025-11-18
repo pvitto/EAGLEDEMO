@@ -1,31 +1,22 @@
 <?php
 // Configuración de la conexión a la base de datos para XAMPP
-$servername = "localhost"; // El servidor de la base de datos es 'localhost' (usualmente en el puerto 3306 por defecto)
-$username = "imancini9_paoloman";        // Usuario por defecto en XAMPP
-$password = "Pman!cini1";            // Contraseña por defecto en XAMPP es vacía
-$dbname = "imancini9_eagle_3_db";    // El nombre de la base de datos que creamos
-
+$servername = "127.0.0.1"; // El servidor de la base de datos es 'localhost' (usualmente en el puerto 3306 por defecto)
+$username = "root";        // Usuario por defecto en XAMPP
+$password = "";            // Contraseña por defecto en XAMPP es vacía
+$dbname = "eagle_3_db";    // El nombre de la base de datos que creamos
+$port = 3306;
 // Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("❌ Error de conexión: " . $conn->connect_error);
-}
-
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Verificar la conexión
-/*if ($conn->connect_error) {
+if ($conn->connect_error) {
   header('Content-Type: application/json');
   echo json_encode(['success' => false, 'error' => "Conexión a la base de datos fallida: " . $conn->connect_error]);
   exit();
-}*/
+}
 
 // Establecer el charset a UTF-8 para soportar caracteres especiales
 $conn->set_charset("utf8mb4");
-
-$conn->query("SET SESSION sql_mode = (SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-
 
 // --- ¡NUEVO CÓDIGO DE ZONA HORARIA! ---
 
